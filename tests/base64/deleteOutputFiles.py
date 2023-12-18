@@ -20,7 +20,9 @@ def delete_files_in_folder(folder_path):
         print(f"An error occurred: {e}")
 
 
-current_directory = os.getcwd()
-folder_path = current_directory + "/base64/output"
+script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
+folder_path = script_directory + "/output"
+
+
 
 delete_files_in_folder(folder_path)

@@ -1,9 +1,10 @@
 import os
+import sys
 
-current_directory = os.getcwd()
+script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
 
 # Define the path for the new directory
-folder_path = os.path.join(current_directory, "base64", "output")
+folder_path = script_directory + "/output"
 
 # Create an empty directory if it doesn't exist
 if not os.path.exists(folder_path):
