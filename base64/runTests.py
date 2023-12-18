@@ -2,6 +2,7 @@ import os
 
 # Dictionary of commands with keys
 commands_dict = {
+    "createDir": "poetry run python base64/createOutputDir.py",
     "delete": "poetry run python base64/deleteOutputFiles.py",
     "encode": "poetry run python base64/EncodeFileToBase64.py base64/input/file.pdf base64/output/file.txt",
     "decode": "poetry run python base64/decodeBase64ToFile.py base64/input/file.txt base64/output/file.pdf"
