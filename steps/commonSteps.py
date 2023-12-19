@@ -32,26 +32,15 @@ def delete_files_in_folder(folder_path):
         print(f"An error occurred: {e}")
 
 
-def encode_file_to_base64(file_path):
+def base64Cipher(file_path,encode):
     try:
         with open(file_path, "rb") as file:
             file_content = file.read()
-            encoded_content = base64.b64encode(file_content)
-            return encoded_content
-    except FileNotFoundError:
-        print(f"File '{file_path}' not found.")
-        return None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
-
-
-def decode_base64_to_file(file_path):
-    try:
-        with open(file_path, "rb") as file:
-            file_content = file.read()
-            decoded_content = base64.b64decode(file_content)
-            return decoded_content
+            if encode == True:
+                content = base64.b64encode(file_content)
+            else:
+                content = base64.b64decode(file_content)  
+            return content
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
         return None
