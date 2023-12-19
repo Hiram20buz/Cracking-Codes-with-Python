@@ -4,7 +4,7 @@ import sys
 import base64
 
 
-def createDir(directory):
+def createDir(directory: str):
     folder_path = "/" + directory
 
     if not os.path.exists(folder_path):
@@ -14,7 +14,7 @@ def createDir(directory):
         print(f"Directory '{folder_path}' already exists.")
 
 
-def delete_files_in_folder(folder_path):
+def delete_files_in_folder(folder_path: str):
     try:
         content_list = os.listdir(folder_path)
 
@@ -32,7 +32,7 @@ def delete_files_in_folder(folder_path):
         print(f"An error occurred: {e}")
 
 
-def base64Cipher(file_path,encode):
+def base64Cipher(file_path: str,encode: bool):
     try:
         with open(file_path, "rb") as file:
             file_content = file.read()
@@ -49,7 +49,7 @@ def base64Cipher(file_path,encode):
         return None
 
 
-def write_data_to_file(file_path, data):
+def write_data_to_file(file_path: str, data: str):
     try:
         with open(file_path, "wb") as output_file:
             output_file.write(data)
