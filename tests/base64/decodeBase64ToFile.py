@@ -17,7 +17,7 @@ if __name__ == "__main__":
         input_file_path = sys.argv[1]
         output_file_path = sys.argv[2]
         
-        decoded_data = commonSteps.decode_base64_to_file(input_file_path)
+        decoded_data = commonSteps.base64Cipher(input_file_path, False)
         
         if decoded_data:
             commonSteps.write_data_to_file(output_file_path, decoded_data)
