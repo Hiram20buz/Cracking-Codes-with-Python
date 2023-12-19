@@ -1,6 +1,6 @@
 import sys
 
-def reverseCipher(message):
+def reverseCipher(message: str):
     translated = ''
     i = len(message) - 1
     while i >= 0:
