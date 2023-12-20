@@ -2,6 +2,7 @@
 import os
 import sys
 import base64
+import reverse
 
 
 def createDir(directory: str):
@@ -60,3 +61,17 @@ def write_data_to_file(file_path: str, data: str):
 
 def script_directory() -> str:
     return os.path.dirname(os.path.abspath(sys.argv[0]))
+
+
+def reverseCipher(input_file_name: str, output_file_name: str):
+    try:
+        with open(input_file_name, 'r') as input_file, open(output_file_name, 'w') as output_file:
+            for line in input_file:
+                encrypted_line = reverse.cipher(line.strip())  # Assuming you want to strip newline characters
+                output_file.write(encrypted_line + '\n')  # Write encrypted line to output file
+
+        print("Encryption successful. Check", output_file_name)
+    except FileNotFoundError:
+        print("File not found.")
+    except Exception as e:
+        print("An error occurred:", e)
