@@ -1,0 +1,25 @@
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    types: [opened]  # Trigger the workflow when a pull request is opened
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Define the operating system for the job
+
+    steps:
+      - name: Install Python 3
+        run: sudo apt-get update && sudo apt-get install -y python3
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Checkout code
+        uses: actions/checkout@v2  # Action to check out your repository's code
+
+      - name: Run Tests with Poetry
+        run: |
+          poetry install
+          poetry run python tests/base64/runTests.py
