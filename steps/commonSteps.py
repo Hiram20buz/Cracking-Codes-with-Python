@@ -32,7 +32,7 @@ def delete_files_in_folder(folder_path: str):
         print(f"An error occurred: {e}")
 
 
-def base64Cipher(file_path: str,encode: bool):
+def base64Cipher(file_path: str,encode: bool) -> str:
     try:
         with open(file_path, "rb") as file:
             file_content = file.read()
@@ -56,3 +56,7 @@ def write_data_to_file(file_path: str, data: str):
         print(f"Data content successfully written to {file_path}")
     except Exception as e:
         print(f"Error writing to file: {e}")
+
+
+def script_directory() -> str:
+    return os.path.dirname(os.path.abspath(sys.argv[0]))

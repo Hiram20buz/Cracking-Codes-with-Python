@@ -9,9 +9,6 @@ sys.path.append(steps_path)
 import commonSteps
 
 
-script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
-folder_path = script_directory + "/output"
-
-
+folder_path = commonSteps.script_directory() + "/output"
 
 commonSteps.delete_files_in_folder(folder_path)
