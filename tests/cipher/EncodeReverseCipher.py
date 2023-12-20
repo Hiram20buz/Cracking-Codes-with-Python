@@ -15,6 +15,6 @@ if __name__ == "__main__":
     else:
         input_file_path = sys.argv[1]
         output_file_path = sys.argv[2]
-        print(input_file_path)
-        print(output_file_path)
+        #print(input_file_path)
+        #print(output_file_path)
         commonSteps.reverseCipher(input_file_path, output_file_path)
