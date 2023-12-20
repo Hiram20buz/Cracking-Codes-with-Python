@@ -3,14 +3,12 @@ import os
 
 current_directory = os.getcwd()
 steps_path = os.path.join(current_directory, 'steps')
-print(steps_path)
+#print(steps_path)
 sys.path.append(steps_path)
 
 import commonSteps
 
-script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
-
 # Define the path for the new directory
-folder_path = script_directory + "/output"
-
+folder_path = commonSteps.script_directory() + "/output"
+#print(folder_path)
 commonSteps.createDir(folder_path)

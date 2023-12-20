@@ -1,15 +1,23 @@
 import os
 import sys
 
-script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
+current_directory = os.getcwd()
+steps_path = os.path.join(current_directory, 'steps')
+#print(steps_path)
+sys.path.append(steps_path)
+
+import commonSteps
+
+
+script_dir = commonSteps.script_directory()
 #print(script_directory)
 
 # Dictionary of commands with keys
 commands_dict = {
-    "createDir": "poetry run python " + script_directory + "/createOutputDir.py",
-    "delete": "poetry run python " + script_directory + "/deleteOutputFiles.py",
-    "encode": "poetry run python " + script_directory + "/EncodeFileToBase64.py " + script_directory + "/input/file.pdf " + script_directory + "/output/file.txt",
-    "decode": "poetry run python " + script_directory + "/decodeBase64ToFile.py " + script_directory + "/input/file.txt " + script_directory + "/output/file.pdf"
+    "createDir": "poetry run python " + script_dir + "/createOutputDir.py",
+    "delete": "poetry run python " + script_dir + "/deleteOutputFiles.py",
+    "encode": "poetry run python " + script_dir + "/EncodeFileToBase64.py " + script_dir + "/input/file.pdf " + script_dir + "/output/file.txt",
+    "decode": "poetry run python " + script_dir + "/decodeBase64ToFile.py " + script_dir + "/input/file.txt " + script_dir + "/output/file.pdf"
 }
 
 # Execute a specific command based on a key
