@@ -1,4 +1,4 @@
-def cipher(message: str):
+def cipher(message: str) -> str:
     translated = ''
     i = len(message) - 1
     while i >= 0:
