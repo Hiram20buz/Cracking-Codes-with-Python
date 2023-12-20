@@ -2,11 +2,11 @@ name: Pull Request Workflow
 
 on:
   pull_request:
-    types: [opened]  # Trigger the workflow when a pull request is opened
+    types: [opened, synchronize, reopened, closed, ready_for_review]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Define the operating system for the job
+    runs-on: ubuntu-latest
 
     steps:
       - name: Install Python 3
@@ -23,3 +23,20 @@ jobs:
         run: |
           poetry install
           poetry run python tests/base64/runTests.py
+
+      - name: Set PR status
+        if: always()  # Set status regardless of previous steps
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const status = process.env.GITHUB_RUN_CONCLUSION === 'success' ? 'success' : 'failure';
+            const context = process.env.GITHUB_CONTEXT;
+            github.repos.createStatus({
+              ...context.repo,
+              sha: context.sha,
+              state: status,
+              description: 'Checks passed: ' + (status === 'success' ? 'All checks have passed' : 'Some checks have failed'),
+              context: 'pull-request-checks'
+            });
+
