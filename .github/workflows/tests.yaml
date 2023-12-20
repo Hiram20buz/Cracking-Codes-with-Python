@@ -2,15 +2,18 @@ name: Pull Request Workflow
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, closed, ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Python 3
-        run: sudo apt-get update && sudo apt-get install -y python3
+      - name: Install Python 3.11
+        run: |
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt-get update
+          sudo apt-get install -y python3.11
 
       - name: Install Poetry
         run: |
@@ -23,20 +26,3 @@ jobs:
         run: |
           poetry install
           poetry run python tests/base64/runTests.py
-
-      - name: Set PR status
-        if: always()  # Set status regardless of previous steps
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const status = process.env.GITHUB_RUN_CONCLUSION === 'success' ? 'success' : 'failure';
-            const context = process.env.GITHUB_CONTEXT;
-            github.repos.createStatus({
-              ...context.repo,
-              sha: context.sha,
-              state: status,
-              description: 'Checks passed: ' + (status === 'success' ? 'All checks have passed' : 'Some checks have failed'),
-              context: 'pull-request-checks'
-            });
-
