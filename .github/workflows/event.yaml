@@ -1,0 +1,20 @@
+name: Update README Every 5 Minutes
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Executes every 5 minutes
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Get current hour
+        id: current_hour
+        run: echo "::set-output name=hour::$(date +'%H')"
+
+      - name: Update README
+        run: echo "Current hour: ${{ steps.current_hour.outputs.hour }}" >> event.md
