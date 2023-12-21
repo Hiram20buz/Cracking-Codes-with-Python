@@ -25,4 +25,4 @@ jobs:
       - name: Run Tests with Poetry
         run: |
           poetry install
-          poetry run python tests/base64/runTests.py
+          poetry run python main.py
