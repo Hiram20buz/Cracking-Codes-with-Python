@@ -3,6 +3,7 @@ import os
 import sys
 import base64
 import reverse
+import caesar
 
 
 def createDir(directory: str):
@@ -33,7 +34,7 @@ def delete_files_in_folder(folder_path: str):
         print(f"An error occurred: {e}")
 
 
-def base64Cipher(file_path: str,encode: bool) -> str:
+def base64Cipher(file_path: str, encode: bool) -> str:
     try:
         with open(file_path, "rb") as file:
             file_content = file.read()
@@ -68,6 +69,20 @@ def reverseCipher(input_file_name: str, output_file_name: str):
         with open(input_file_name, 'r') as input_file, open(output_file_name, 'w') as output_file:
             for line in input_file:
                 encrypted_line = reverse.cipher(line.strip())  # Assuming you want to strip newline characters
+                output_file.write(encrypted_line + '\n')  # Write encrypted line to output file
+
+        print("Encryption successful. Check", output_file_name)
+    except FileNotFoundError:
+        print("File not found.")
+    except Exception as e:
+        print("An error occurred:", e)
+
+
+def caesarCipher(input_file_name: str, output_file_name: str, key: int, mode: str):
+    try:
+        with open(input_file_name, 'r') as input_file, open(output_file_name, 'w') as output_file:
+            for line in input_file:
+                encrypted_line = caesar.cipher(line.strip(), key, mode)  # Assuming you want to strip newline characters
                 output_file.write(encrypted_line + '\n')  # Write encrypted line to output file
 
         print("Encryption successful. Check", output_file_name)
