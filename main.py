@@ -15,7 +15,7 @@ script_dir = commonSteps.script_directory()
 # Dictionary of commands with keys
 commands_dict = {
     "base64": "poetry run python tests/base64/runTests.py",
-    "cipher": "poetry run python tests/cipher/runTests.py",
+    "reverse": "poetry run python tests/reverse/runTests.py",
     "caesar": "poetry run python tests/caesar/runTests.py",
 }
 

@@ -3,12 +3,12 @@ import os
 
 current_directory = os.getcwd()
 steps_path = os.path.join(current_directory, 'steps')
-print(steps_path)
+#print(steps_path)
 sys.path.append(steps_path)
 
 import commonSteps
 
 
-folder_path = commonSteps.script_directory() + "/output"
+folder_path = commonSteps.script_directory() + "/" + sys.argv[1] + "/output"
 
 commonSteps.delete_files_in_folder(folder_path)

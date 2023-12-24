@@ -14,8 +14,8 @@ script_dir = commonSteps.script_directory()
 
 # Dictionary of commands with keys
 commands_dict = {
-    "createDir": "poetry run python " + script_dir + "/createOutputDir.py",
-    "delete": "poetry run python " + script_dir + "/deleteOutputFiles.py",
+    "createDir": "poetry run python tests/createOutputDir.py reverse",
+    "delete": "poetry run python tests/deleteOutputFiles.py reverse",
     "encode": "poetry run python " + script_dir + "/EncodeReverseCipher.py " + script_dir + "/input/file.txt " + script_dir + "/output/encoded.txt",
     "decode": "poetry run python " + script_dir + "/EncodeReverseCipher.py " + script_dir + "/input/encoded.txt " + script_dir + "/output/file.txt"
 }
