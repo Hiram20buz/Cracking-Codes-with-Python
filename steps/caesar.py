@@ -1,6 +1,7 @@
 def cipher(message: str, key: int, mode: str) -> str:
     # Every possible symbol that can be encrypted:
     SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+    #SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.`~@#$%^&*()_+-=[]{}|;:<>,/'
 
     # Store the encrypted/decrypted form of the message:
     translated = ''
