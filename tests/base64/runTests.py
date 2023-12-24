@@ -11,11 +11,10 @@ import commonSteps
 
 script_dir = commonSteps.script_directory()
 #print(script_directory)
-
 # Dictionary of commands with keys
 commands_dict = {
-    "createDir": "poetry run python " + script_dir + "/createOutputDir.py",
-    "delete": "poetry run python " + script_dir + "/deleteOutputFiles.py",
+    "createDir": "poetry run python tests/createOutputDir.py base64",
+    "delete": "poetry run python tests/deleteOutputFiles.py base64",
     "encode": "poetry run python " + script_dir + "/EncodeFileToBase64.py " + script_dir + "/input/file.pdf " + script_dir + "/output/file.txt",
     "decode": "poetry run python " + script_dir + "/decodeBase64ToFile.py " + script_dir + "/input/file.txt " + script_dir + "/output/file.pdf"
 }
