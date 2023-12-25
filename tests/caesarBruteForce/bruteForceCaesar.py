@@ -1,3 +1,13 @@
+import nltk
+
+
+def is_english(text):
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    words = nltk.wordpunct_tokenize(text)
+    word_count = sum(1 for word in words if word.lower() in english_vocab)
+    return word_count / len(words) > 0.5  # Threshold for English detection
+
+
 # Caesar Cipher Hacker
 #message = 'guv6Jv6Jz!J6rp5r7Jzr66ntrM'
 message = 'qeFIP?eGSeECNNS'
@@ -30,6 +40,9 @@ for key in range(len(SYMBOLS)):
         
     # Display every possible decryption:
     print('Key #%s: %s' % (key, translated))
+    if is_english(translated):
+        break
+
 
 
             
