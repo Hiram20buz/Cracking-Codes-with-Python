@@ -1,7 +1,7 @@
 import nltk
 
 
-def is_english(text):
+def is_english(text: str) -> bool:
     english_vocab = set(w.lower() for w in nltk.corpus.words.words())
     words = nltk.wordpunct_tokenize(text)
     word_count = sum(1 for word in words if word.lower() in english_vocab)
