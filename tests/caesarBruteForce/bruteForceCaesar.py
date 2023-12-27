@@ -1,11 +1,12 @@
-import nltk
+import sys
+import os
 
+current_directory = os.getcwd()
+steps_path = os.path.join(current_directory, 'steps')
+#print(steps_path)
+sys.path.append(steps_path)
 
-def is_english(text: str) -> bool:
-    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
-    words = nltk.wordpunct_tokenize(text)
-    word_count = sum(1 for word in words if word.lower() in english_vocab)
-    return word_count / len(words) > 0.5  # Threshold for English detection
+import commonSteps
 
 
 # Caesar Cipher Hacker
@@ -40,7 +41,7 @@ for key in range(len(SYMBOLS)):
         
     # Display every possible decryption:
     print('Key #%s: %s' % (key, translated))
-    if is_english(translated):
+    if commonSteps.is_english(translated):
         break
 
 
