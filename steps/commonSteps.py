@@ -4,6 +4,7 @@ import sys
 import base64
 import reverse
 import caesar
+import nltk
 
 
 def createDir(directory: str):
@@ -90,3 +91,12 @@ def caesarCipher(input_file_name: str, output_file_name: str, key: int, mode: st
         print("File not found.")
     except Exception as e:
         print("An error occurred:", e)
+
+
+def is_english(text: str) -> bool:
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    words = nltk.wordpunct_tokenize(text)
+    word_count = sum(1 for word in words if word.lower() in english_vocab)
+    return word_count / len(words) > 0.5  # Threshold for English detection
+
+
